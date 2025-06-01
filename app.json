@@ -3,7 +3,6 @@
     "name": "frontend",
     "slug": "frontend",
     "version": "1.0.0",
-
     "scheme": "frontend",
     "web": {
       "bundler": "metro",
@@ -17,32 +16,51 @@
         {
           "launchMode": "most-recent"
         }
+      ],
+      [
+        "@react-native-voice/voice",
+        {
+          "microphonePermission": "CUSTOM: Allow $(PRODUCT_NAME) to access the microphone",
+          "speechRecognitionPermission": "CUSTOM: Allow $(PRODUCT_NAME) to securely recognize user speech"
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "We need access to your microphone to record audio.",
+        "NSSpeechRecognitionUsageDescription": "We need access to speech recognition to understand your speech input."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.sheikhrussell123.frontend",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e80ca11c-1a27-4770-a3ac-c91b2412744b"
       }
     }
   }
